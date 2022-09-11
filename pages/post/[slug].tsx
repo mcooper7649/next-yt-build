@@ -48,7 +48,7 @@ function Post({ post }: Props) {
     <main>
       <Header />
       <img
-        className="w-full  object-cover"
+        className="w-full h-96 object-contain"
         src={urlFor(post.mainImage).url()!}
         alt=""
       />
@@ -212,7 +212,7 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const query = `*[_type == "post" && slug.current == "my-first-post"][0]{
+  const query = `*[_type == "post" && slug.current == $slug][0]{
     _id,
     _createdAt,
     _updatedAt,
